@@ -1,1 +1,26 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OCAtweet</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">OCATweet</a></h1>
+        <div class="user_nav grid-6">
+          <%= link_toメソッドを使って、作成画面まで遷移させる（表示させる文字は「投稿する」）, class: "post"%>
+        </div>
+      </div>
+    </header>
+      <%= yield %>
+    <footer>
+      <p>
+        Copyright OCATweet 2022.
+      </p>
+    </footer>
+  </body>
+</html>
