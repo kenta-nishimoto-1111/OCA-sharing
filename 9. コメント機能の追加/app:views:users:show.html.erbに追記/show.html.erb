@@ -1,0 +1,33 @@
+    <a href="/users/<%= @tweet.user.id %>">
+    <span>投稿者:</span><%= @tweet.user.nickname %>
+    </a>
+  </div>
+    <div class="tweet_text"><%= @tweet.text %></div>
+  </div>
+  の下に以下を追加
+
+  <%# 下記の記述で詳細画面にコメントの記入欄が表示される %>
+  <div class="container">
+    <% if ログインの有無を確認する条件式 %>
+      <%= form_with(コメントを投稿するためのformを完成させる) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p> 
+      </strong>
+    <% end %>
+     <%# 下記の記述でコメントの一覧が表示される %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if コメントが存在しているのか？の条件式 %>
+        <% each文でコメントを取り出す %>
+          <p>
+            <strong><%= link_toでコメントした人の名前を表示させ、名前を押せばコメント者の詳細画面に遷移させる %>：</strong>
+            <%= コメントを表示させる %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

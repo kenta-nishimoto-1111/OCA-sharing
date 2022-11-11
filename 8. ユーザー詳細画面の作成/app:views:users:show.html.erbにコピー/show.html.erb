@@ -1,0 +1,26 @@
+<div class="contents row">
+  <p><%= 投稿者の名前を表示させる %>さんの投稿一覧</p>
+  <% each文でツイートを表示させる %>
+    <div class="content_post">
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <% if ユーザーがログイン中かつログイン者の投稿者が同一人物である条件式を記述 %>
+        <ul class="more_list">
+          <li>
+            <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', tweet_path(tweet.id) , method: :delete %>
+          </li>
+        </ul>
+        <% end %>
+      </div>
+      <div>
+        <a href="ユーザー詳細へ飛ぶバスを設定する">
+          <span>投稿者:</span><%= 投稿者の氏名を表示 %>
+        </a>
+      </div>
+      <div class="tweet_text"><%= ツイートを表示 %></div>
+    </div>
+  <% end %>
+</div>

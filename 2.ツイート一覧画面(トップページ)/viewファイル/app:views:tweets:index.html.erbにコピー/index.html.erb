@@ -1,0 +1,15 @@
+<div class="contents row">
+  <% モデルで取得した値をeach文で取り出す %>
+    <div class="content_post">
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+      </div>
+      <div>
+        <a href="/">
+          <span>投稿者:</span><%= モデルで取得した値のnameカラムを表示させる %>
+        </a>
+      </div>
+        <div class="tweet_text"><%= モデルで取得した値のtextカラムを表示させる %></div>
+    </div>
+  <% end %>
+</div>
