@@ -1,11 +1,26 @@
-    <a href="/users/<%= @tweet.user.id %>">
-    <span>投稿者:</span><%= @tweet.user.nickname %>
-    </a>
+<div class ="contents row">
+  <div class="content_post">
+    <div class="more">
+      <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <%#下記の記述でログイン中かつユーザー出ないと編集と削除が表示できないようにした%>
+        <% if user_signed_in? && current_user.id == tweet.user_id %>
+          <li>
+            <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', tweet_path(tweet.id) , method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <a href="/users/<%= tweet.user.id %>">
+        <span>投稿者:</span><%= tweet.user.nickname %>
+      </a>
+    </div>
+    <div class="tweet_text"><%= tweet.text %></div>
   </div>
-    <div class="tweet_text"><%= @tweet.text %></div>
-  </div>
-  の下に以下を追加
-
   <%# 下記の記述で詳細画面にコメントの記入欄が表示される %>
   <div class="container">
     <% if ログインの有無を確認する条件式 %>
@@ -17,7 +32,7 @@
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p> 
       </strong>
     <% end %>
-     <%# 下記の記述でコメントの一覧が表示される %>
+    <%# 下記の記述でコメントの一覧が表示される %>
     <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% if コメントが存在しているのか？の条件式 %>
